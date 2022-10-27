@@ -1,0 +1,25 @@
+{
+  "name": "rtl_433_sonoff_rf_bridge",
+  "version": "2022.5.10",
+  "slug": "rtl_433_sonoff_rf_bridge",
+  "description": "Receive wireless sensor data via MQTT from Sonoff RF bridge and parse with rtl_433",
+  "url": "https://github.com/dscao/rtl_433-hass-addons/tree/main/rtl_433_sonoff_rf_bridge",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "application",
+  "boot": "auto",
+  "init": false,
+  "options": {
+    "mqtt_host": "hassio",
+    "mqtt_port": 1883,
+    "mqtt_user": "",
+    "mqtt_password": "",
+    "tasmota_topic": "tele/tasmota_XXXXXX/RESULT"
+  },
+  "schema": {
+    "mqtt_host": "str",
+    "mqtt_port": "int",
+    "mqtt_user": "str",
+    "mqtt_password": "str",
+    "tasmota_topic": "str"
+  }
+}
