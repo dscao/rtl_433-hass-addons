@@ -16,7 +16,7 @@ WORKDIR /build
 RUN git clone https://github.com/dscao/rtl_433_sonoff
 WORKDIR ./rtl_433_sonoff
 
-ARG rtl433GitRevision=719143abb53b5b0b19de86a3985da8beffacd7dc
+ARG rtl433GitRevision=8c72cc8e7d00ec25fa4acd218a1e7da218e1687d
 RUN git checkout ${rtl433GitRevision}
 WORKDIR ./build
 RUN cmake ..
