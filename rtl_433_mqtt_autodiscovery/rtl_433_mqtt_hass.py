@@ -493,6 +493,7 @@ mappings = {
         "device_type": "sensor",
         "object_suffix": "stdist",
         "config": {
+            "device_class": "distance",
             "name": "Lightning Distance",
             "unit_of_measurement": "mi",
             "value_template": "{{ value|int }}",
@@ -504,6 +505,7 @@ mappings = {
         "device_type": "sensor",
         "object_suffix": "stdist",
         "config": {
+            "device_class": "distance",
             "name": "Lightning Distance",
             "unit_of_measurement": "mi",
             "value_template": "{{ value|int }}",
