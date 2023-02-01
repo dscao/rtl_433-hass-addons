@@ -1,3 +1,8 @@
+## [0.5.1] - 2023-2-1
+
+* add some device class
+* modify lux to lx
+
 ## [0.5.0] - 2022-10-25
 
 * Upgrade rtl_433 to the latest master #117 #119
