@@ -597,8 +597,7 @@ def publish_config(mqttc, topic, model, instance, mapping):
     device_type = mapping["device_type"]
     object_suffix = mapping["object_suffix"]
     object_id = instance_no_slash
-    #object_name = "-".join([object_id,object_suffix])
-    object_name = object_suffix
+    object_name = "-".join([object_id,object_suffix])
 
     path = "/".join([args.discovery_prefix, device_type, object_id, object_name, "config"])
 
@@ -612,10 +611,10 @@ def publish_config(mqttc, topic, model, instance, mapping):
     discovery_timeouts[path] = now + args.discovery_interval
 
     config = mapping["config"].copy()
-    config["name"] = object_name
+    #config["name"] = object_name
     config["state_topic"] = topic
     config["unique_id"] = object_name
-    config["device"] = { "identifiers": object_id, "name": object_id, "model": model, "manufacturer": "rtl_433" }
+    config["device"] = { "identifiers": object_id, "name": object_name, "model": model, "manufacturer": "rtl_433" }
 
     if args.force_update:
         config["force_update"] = "true"
