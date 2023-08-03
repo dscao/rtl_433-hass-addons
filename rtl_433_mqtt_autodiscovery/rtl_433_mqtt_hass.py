@@ -105,9 +105,10 @@ import re
 
 discovery_timeouts = {}
 
+
 # Fields that get ignored when publishing to Home Assistant
 # (reduces noise to help spot missing field mappings)
-SKIP_KEYS = [ "type", "model", "subtype", "channel", "id", "mic", "mod",
+SKIP_KEYS = [ "type", "model", "subtype", "channel", "id", "time", "mic", "mod",
                 "freq", "sequence_num", "message_type", "exception", "raw_msg" ]
 
 
@@ -760,7 +761,7 @@ def rtl_433_device_info(data):
     #path = ''.join(list(filter(lambda item: item, path_elements)))
     id = '-'.join(id_elements)
 
-    for key in NAMING_KEYS:
+    for key in SKIP_KEYS:
         if key in data:
             element = sanitize(str(data[key]))
             path_elements.append(element)
