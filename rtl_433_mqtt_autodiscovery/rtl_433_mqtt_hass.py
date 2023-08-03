@@ -759,14 +759,8 @@ def rtl_433_device_info(data):
             path_elements.append(match.group(3))
         last_match_end = match.end()    
 
-    #path = ''.join(list(filter(lambda item: item, path_elements)))
+    path = ''.join(list(filter(lambda item: item, path_elements)))
     id = '-'.join(id_elements)
-
-    for key in SKIP_KEYS:
-        if key in data:
-            element = sanitize(str(data[key]))
-            path_elements.append(element)
-    path = '/'.join(path_elements)
   
     return (path, id)
 
@@ -843,8 +837,8 @@ def bridge_event_to_hass(mqttc, topicprefix, data):
     # detect known attributes
     for key in data.keys():
         if key in mappings:
-            topic = "/".join([topicprefix,"devices",model,instance,key])
-            # topic = "/".join([base_topic, key])
+            # topic = "/".join([topicprefix,"devices",model,instance,key])
+            topic = "/".join([topicprefix, base_topic, key])
             if publish_config(mqttc, topic, model, device_id, mappings[key]):
                 published_keys.append(key)
         else:
