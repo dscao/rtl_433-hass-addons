@@ -713,8 +713,7 @@ def mqtt_disconnect(client, userdata, rc):
 
 def mqtt_message(client, userdata, msg):
     """Callback for MQTT message PUBLISH."""
-    logging.debug("MQTT message: " + json.dumps(msg.payload.decode()))
-    logging.debug(msg.topic)
+    logging.debug("MQTT message: " + json.dumps(msg.payload.decode()) + ";topic:" + msg.topic)
     try:
         # Decode JSON payload
         data = json.loads(msg.payload.decode())
