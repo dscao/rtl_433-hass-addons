@@ -714,7 +714,7 @@ def mqtt_disconnect(client, userdata, rc):
 def mqtt_message(client, userdata, msg):
     """Callback for MQTT message PUBLISH."""
     logging.debug("MQTT message: " + json.dumps(msg.payload.decode()))
-
+    logging.debug(msg.topic)
     try:
         # Decode JSON payload
         data = json.loads(msg.payload.decode())
@@ -724,6 +724,8 @@ def mqtt_message(client, userdata, msg):
         return
 
     topicprefix = "/".join(msg.topic.split("/", 2)[:2])    
+    logging.debug(topicprefix)
+  
     bridge_event_to_hass(client, topicprefix, data)
 
 
@@ -811,7 +813,7 @@ def publish_config(mqttc, topic, model, object_id, mapping, value=None):
 
 def bridge_event_to_hass(mqttc, topicprefix, data):
     """Translate some rtl_433 sensor data to Home Assistant auto discovery."""
-    logging.debug("topicprefix: " + topicprefix)
+    
     if "model" not in data:
         # not a device event
         logging.debug("Model is not defined. Not sending event to Home Assistant.")
