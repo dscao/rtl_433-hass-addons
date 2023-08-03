@@ -795,8 +795,8 @@ def publish_config(mqttc, topic, model, object_id, mapping, value=None):
     else:
         config["state_topic"] = topic
         config["unique_id"] = object_name
-        #config["name"] = object_name
-    config["device"] = { "identifiers": [object_id], "name": object_name, "model": model, "manufacturer": "rtl_433" }
+        config["name"] = object_suffix
+    config["device"] = { "identifiers": [object_id], "name": object_id, "model": model, "manufacturer": "rtl_433" }
 
     if args.force_update:
         config["force_update"] = "true"
