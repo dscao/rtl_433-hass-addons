@@ -724,6 +724,7 @@ def mqtt_message(client, userdata, msg):
         return
 
     topicprefix = "/".join(msg.topic.split("/", 2)[:2])
+    logging.debug("topicprefix: " + topicprefix)
     bridge_event_to_hass(client, topicprefix, data)
 
 
@@ -842,8 +843,8 @@ def bridge_event_to_hass(mqttc, topicprefix, data):
     # detect known attributes
     for key in data.keys():
         if key in mappings:
-            # topic = "/".join([topicprefix,"devices",model,instance,key])
-            topic = "/".join([base_topic, key])
+            topic = "/".join([topicprefix,"devices",model,instance,key])
+            # topic = "/".join([base_topic, key])
             if publish_config(mqttc, topic, model, device_id, mappings[key]):
                 published_keys.append(key)
         else:
