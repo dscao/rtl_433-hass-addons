@@ -755,10 +755,17 @@ def rtl_433_device_info(data):
             id_elements.append(element)
         elif match.group(3):
             path_elements.append(match.group(3))
-        last_match_end = match.end()
+        last_match_end = match.end()    
 
-    path = ''.join(list(filter(lambda item: item, path_elements)))
+    #path = ''.join(list(filter(lambda item: item, path_elements)))
     id = '-'.join(id_elements)
+
+    for key in NAMING_KEYS:
+        if key in data:
+            element = sanitize(str(data[key]))
+            path_elements.append(element)
+    path = '/'.join(path_elements)
+  
     return (path, id)
 
 
@@ -929,6 +936,7 @@ if __name__ == "__main__":
                         help="Interval to republish config topics in seconds (default: %(default)d)")
     parser.add_argument("-x", "--expire-after", type=int,
                         dest="expire_after",
+                        default=21600,
                         help="Number of seconds with no updates after which the sensor becomes unavailable")
     parser.add_argument("-I", "--ids", type=int, nargs="+",
                         help="ID's of devices that will be discovered (omit for all)")
