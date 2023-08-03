@@ -723,8 +723,7 @@ def mqtt_message(client, userdata, msg):
         logging.error("JSON decode error: " + msg.payload.decode())
         return
 
-    topicprefix = "/".join(msg.topic.split("/", 2)[:2])
-    logging.debug("topicprefix: " + topicprefix)
+    topicprefix = "/".join(msg.topic.split("/", 2)[:2])    
     bridge_event_to_hass(client, topicprefix, data)
 
 
@@ -812,7 +811,7 @@ def publish_config(mqttc, topic, model, object_id, mapping, value=None):
 
 def bridge_event_to_hass(mqttc, topicprefix, data):
     """Translate some rtl_433 sensor data to Home Assistant auto discovery."""
-
+    logging.debug("topicprefix: " + topicprefix)
     if "model" not in data:
         # not a device event
         logging.debug("Model is not defined. Not sending event to Home Assistant.")
@@ -838,7 +837,8 @@ def bridge_event_to_hass(mqttc, topicprefix, data):
     for key in data.keys():
         if key in mappings:
             # topic = "/".join([topicprefix,"devices",model,instance,key])
-            topic = "/".join([base_topic, key])
+            topic = "/".join([topicprefix, base_topic, key])
+            logging.debug("topic: " + topic)
             if publish_config(mqttc, topic, model, device_id, mappings[key]):
                 published_keys.append(key)
         else:
@@ -847,7 +847,8 @@ def bridge_event_to_hass(mqttc, topicprefix, data):
 
     if "secret_knock" in data.keys():
         for m in secret_knock_mappings:
-            topic = "/".join([base_topic, "secret_knock"])
+            topic = "/".join([topicprefix, base_topic, key])
+            logging.debug("topic: " + topic)
             if publish_config(mqttc, topic, model, device_id, m):
                 published_keys.append("secret_knock")
 
