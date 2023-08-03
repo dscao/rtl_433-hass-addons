@@ -326,6 +326,7 @@ mappings = {
         "object_suffix": "GS",
         "config": {
             "name": "Gust Speed",
+            "device_class": "wind_speed",
             "unit_of_measurement": "km/h",
             "value_template": "{{ value|float }}",
             "state_class": "measurement"
@@ -337,6 +338,7 @@ mappings = {
         "object_suffix": "GS",
         "config": {
             "name": "Wind max speed",
+            "device_class": "wind_speed",
             "unit_of_measurement": "km/h",
             "value_template": "{{ value|float }}",
             "state_class": "measurement"
@@ -348,6 +350,7 @@ mappings = {
         "object_suffix": "GS",
         "config": {
             "name": "Wind max",
+            "device_class": "wind_speed",
             "unit_of_measurement": "km/h",
             "value_template": "{{ (float(value|float) * 3.6) | round(2) }}",
             "state_class": "measurement"
@@ -359,6 +362,7 @@ mappings = {
         "object_suffix": "GS",
         "config": {
             "name": "Gust Speed",
+            "device_class": "wind_speed",
             "unit_of_measurement": "km/h",
             "value_template": "{{ float(value|float) * 3.6 }}",
             "state_class": "measurement"
