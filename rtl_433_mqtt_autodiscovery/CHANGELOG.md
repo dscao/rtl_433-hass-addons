@@ -1,4 +1,4 @@
-## [0.5.1.2] - 2023-8-3
+## [0.5.1.3] - 2023-8-3
 
 Some MQTT entities have an entity name equal to the device name. This is not expected. The entity name is set to null as a work-a-round to avoid a duplicate name. Please inform the maintainer of the software application that supplies the affected entities to fix this issue.
 
