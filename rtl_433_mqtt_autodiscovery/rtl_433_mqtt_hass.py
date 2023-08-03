@@ -369,6 +369,7 @@ mappings = {
         "object_suffix": "WD",
         "config": {
             "name": "Wind Direction",
+            "icon": "mdi:sign-direction",
             "unit_of_measurement": "°",
             "value_template": "{{ value|float }}",
             "state_class": "measurement"
@@ -380,6 +381,7 @@ mappings = {
         "object_suffix": "RT",
         "config": {
             "name": "Rain Total",
+            "icon": "mdi:weather-rainy",
             "unit_of_measurement": "mm",
             "value_template": "{{ value|float|round(2) }}",
             "state_class": "total_increasing"
@@ -391,6 +393,7 @@ mappings = {
         "object_suffix": "RR",
         "config": {
             "name": "Rain Rate",
+            "icon": "mdi:weather-rainy",
             "unit_of_measurement": "mm/h",
             "value_template": "{{ value|float }}",
             "state_class": "measurement"
@@ -402,6 +405,7 @@ mappings = {
         "object_suffix": "RT",
         "config": {
             "name": "Rain Total",
+            "icon": "mdi:weather-rainy",
             "unit_of_measurement": "mm",
             "value_template": "{{ (float(value|float) * 25.4) | round(2) }}",
             "state_class": "total_increasing"
@@ -413,6 +417,7 @@ mappings = {
         "object_suffix": "RR",
         "config": {
             "name": "Rain Rate",
+            "icon": "mdi:weather-rainy",
             "unit_of_measurement": "mm/h",
             "value_template": "{{ (float(value|float) * 25.4) | round(2) }}",
             "state_class": "measurement"
@@ -564,6 +569,7 @@ mappings = {
         "object_suffix": "uv",
         "config": {
             "name": "UV Raw",
+            "icon": "mdi:sun-wireless-outline",
             "unit_of_measurement": "μw/cm²",
             "value_template": "{{ value|int }}",
             "state_class": "measurement"
@@ -574,6 +580,7 @@ mappings = {
         "object_suffix": "uvi",
         "config": {
             "name": "UV Index",
+            "icon": "mdi:sun-wireless-outline",
             "unit_of_measurement": "UV Index",
             "value_template": "{{ value|int }}",
             "state_class": "measurement"
